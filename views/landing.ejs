@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/header') %>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+<style>
+   
+ 
+ .img-responsive{
+    box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 10px;
+   
+    max-width: 110% !important;
+    
+ }
+
+</style>
+
+<body>
+    <%-include('partials/navbar') %>
+    
+    <div class="container" >
+        <div>
+            <h1 style="text-align: center;">Share Code In Real-time with Developers</h1><br>
+            <%if(user){ %>
+              
+            <a style="margin-left: 500px;" href="/createTask" class="btn btn-danger btn-lg">Create New Task</a>
+            <%}%>
+        </div>
+    <div class="row " style="margin-top: 80px;">
+
+   
+  <div  class="col-xs-6 " id="box" >
+    <img src="https://user-images.githubusercontent.com/1552169/43365885-61862e62-933c-11e8-858e-ea2a6719f350.gif" class="img-responsive">
+    
+</div>
+<div  class="col-xs-6 " id="box" >
+    <img src="https://user-images.githubusercontent.com/1552169/43365885-61862e62-933c-11e8-858e-ea2a6719f350.gif" class="img-responsive">
+</div>
+
+
+
+</div>
+</div>
+    
+
+  
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/header') %>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+
+<body style="overflow-x: hidden; ">
+    <%-include('../partials/navbar') %>
+    <div>
+
+
+
+        <div class="row">
+            <div class="col-md-8">
+                <textarea id="code-screen"><%=content%></textarea>
+
+            </div>
+            <div class="col-md-4" id="chatbox " >
+                <div class="panel panel-primary">
+                  
+                    <div id="video-container">
+                        <video autoplay id="second-video" ></video>
+                        <video autoplay id="my-video"></video>
+                        <div class="main__controls">
+                           
+                                <div onclick="muteUnmute()" id="mute" class="main__controls__button main__mute_button">
+                                    <i class="fas fa-microphone"></i>
+                                    <span>Mute</span>
+                                </div>
+                        <div onclick="playStop()" id="video" class="main__controls__button main__video_button" >
+                            <i class="fas fa-video"></i>
+                            <span>Stop Video</span>
+                        </div>  
+
+                       
+                        
+                        </div>
+                    </div>
+                   
+                    <div class="panel-heading"  >
+                        CHAT ROOM
+                        <span class="pull-right" id="chatbox-username" >
+
+
+                        </span>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="media-list" style="height: 100px; overflow-y: auto;" id="chatbox-listMessages">
+                        </ul>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Enter you Message" id="userMessage">
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-primary" onclick="sendMessage()">SEND</button>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    
+    <input type="hidden" value="<%=roomId%>" id="roomId" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.58.1/mode/javascript/javascript.min.js"> </script>
+    <script src="/plugins/ot/ot.js"></script>
+    <script defer src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.1/socket.io.js"></script>
+    <script src="/script.js" defer></script>
+
+    <script>
+
+        var EditorClient = ot.EditorClient
+        var SocketIOAdapter = ot.SocketIOAdapter
+        var CodeMirrorAdapter = ot.CodeMirrorAdapter
+
+        var socket = io.connect('http://localhost:5000')
+
+        var editor = CodeMirror.fromTextArea(document.getElementById("code-screen"),
+            {
+                lineNumbers: true,
+                theme: 'monokai'
+            })
+        var code = $('#code-screen').val();
+        var cmClient;
+        function init(str, revision, clients, serverAdapter) {
+            if (!code) {
+                editor.setValue(str);
+            }
+
+            cmClient = window.cmClient = new EditorClient(
+                revision, clients, serverAdapter, new CodeMirrorAdapter(editor)
+            )
+        }
+
+        socket.on('doc', function (obj) {
+            init(obj.str, obj.revision, obj.clients, new SocketIOAdapter(socket))
+        })
+        var username = $('#chatbox-username').val()
+
+
+
+        if (username === "") {
+            var userId = Math.floor(Math.random() * 999).toString();
+            username = "User" + userId;
+            $("#chatbox-username").text(username);
+        }
+
+
+        var userMessage = function (name, text) {
+            return ('<li class="media"> ' +
+                                '<b>' + name + '</b>: ' + text +
+                '<hr>  </li>')
+        }
+
+        var roomId = $('#roomId').val()
+        socket.emit('joinRoom', { room: roomId, username: username })
+
+        var sendMessage = function () {
+            var userMessage = $('#userMessage').val();
+            socket.emit('chatMessage', { message: userMessage, username: username })
+            $('#userMessage').val("");
+        }
+
+
+        socket.on('chatMessage', function (data) {
+            $('#chatbox-listMessages').append(userMessage(data.username, data.message))
+        })
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

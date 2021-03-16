@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/header') %>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+
+<body>
+    <%-include('partials/navbar') %>
+
+    <legend class="collab">
+        <h1> <i style="font-size: 38px;" class="fab fa-codepen "></i> Collab Pro</h1>
+    </legend>
+
+    <form class="form-signin" action="/register" method="POST">
+        <% if (locals.errors) { %>
+
+        <% Object.values(errors).forEach(function(error){ %>
+        <div class="alert alert-danger">
+            <%= error.message %>
+
+
+        </div>
+
+        <% }); %>
+
+        <% } %>
+
+
+
+        <h3 class="form-signin-heading text-center">Create Account</h3>
+
+        <label>Username</label>
+        <input type="text" name="username" class="form-control" placeholder="Username" require="" autofocus="">
+        <br />
+        <label>Password</label>
+        <input type="password" name="password" class="form-control" placeholder="Password" require="">
+        <br />
+
+        <button type="submit" class="btn  btn-success ">Sign Up</button>
+
+        <br />
+        <br />
+
+        <div class="separator">
+            <div class="line"></div>
+            <p>OR</p>
+            <div class="line"></div>
+        </div>
+        <br />
+        <a href="/google" class="btn btn-lg btn-danger btn-block" role="button" style="position: relative;"><span
+                class="bottom-left"><i class="fab fa-google"></i> </span>Sign In with Google</a>
+        <br />
+        <a href="/auth/facebook" class="btn btn-lg btn-primary btn-block" role="button"
+            style="position: relative;"><span class="bottom-left"><i class="fab fa-facebook"></i> </span>Sign In with
+            Facebook</button>
+    </form>
+
+
+
+
+</body>
+
+</html>

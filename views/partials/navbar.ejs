@@ -1,0 +1,86 @@
+<head>
+  
+
+  <style>
+    
+    .avatar {
+
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+  </style>
+
+</head>
+
+<nav class="navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+        aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"  style="color: black;font-weight: 500 ;">CollabPro</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/home"  style="color: black;font-weight: 500 ;">Home</a></li>
+        <%if(user){%>
+          <li><a href="/profile/dashboard"  style="color: black;font-weight: 500 ;">Dashboard</a></li>
+          <li><a href="/"  style="color: black;font-weight: 500 ;">Task</a></li>
+          <%}%>
+      </ul>
+      <%if(user){%>
+        <ul class="nav navbar-nav navbar-right" >
+          <li style="margin-top: 10px;color: black;font-weight: 500 "> <img src="https://avatars1.githubusercontent.com/u/72684602?s=60&amp;v=4"
+              alt="Avatar" class="avatar" style="margin-left: 20px;">
+            <%=user.username%>
+          </li>
+          
+        </ul>
+        <%}%>
+          <ul class="nav navbar-nav navbar-right">
+
+
+
+
+            <div class="dropdown">
+              <button class="dropbtn"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24"
+                  viewBox="0 0 172 172" style=" fill:#000000;">
+                  <g fill="none" fill-rule="none" stroke="none" stroke-width="1" stroke-linecap="butt"
+                    stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                    font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                    style="mix-blend-mode: normal">
+                    <path d="M0,172v-172h172v172z" fill="none" fill-rule="nonzero"></path>
+                    <g fill="#000000" fill-rule="evenodd">
+                      <path
+                        d="M78.83333,14.33333v64.5h-64.5v14.33333h64.5v64.5h14.33333v-64.5h64.5v-14.33333h-64.5v-64.5z">
+                      </path>
+                    </g>
+                  </g>
+                </svg>
+
+                <i class="fa fa-caret-down" style="color: black;"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="/project">Projects</a>
+                <%if(user){ %>
+                  <a href="/project/new">New Project</a>
+
+                  <a href="/profile/dashboard">Dashboard</a>
+                  <a href="/">Create Task</a>
+                  <a href="/logout">Logout</a>
+                  <%}%>
+              </div>
+            </div>
+          </ul>
+
+
+    </div>
+
+    <!--/.nav-collapse -->
+  </div>
+</nav>

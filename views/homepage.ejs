@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>CollabPro</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+    .img-responsive {
+      box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      border-radius: 10px;
+
+      max-width: 110% !important;
+
+    }
+
+    .bg-primary {
+      background-color: #707070 !important;
+    }
+
+ 
+    .type-container {
+      position: relative;
+      font-size: 1.8rem;
+      display: flex;
+      margin-left: 370px;
+     
+    }
+
+    #line {
+      position: relative;
+    }
+
+    .bg-light{
+      background-color: white !important;
+    }
+
+    @keyframes blinkTextCursor {
+      from {
+        opacity: 1;
+      }
+
+      to {
+        opacity: 0;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#" style="color: black;font-weight: 400 ;" >CollabPro</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/home" style="color: black;font-weight: 400 ;">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login" style="color: black;font-weight: 400 ;">LogIn</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/register" style="color: black;font-weight: 400 ;">SignUp</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact" style="color: black;font-weight: 400 ;">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-primary py-5 mb-5">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-lg-12">
+          <h1 class="display-4 text-white mb-2" style="margin-top:20px;margin-bottom:10px;text-align: center;" >Collab Pro</h1>
+          <div class="type-container"  >
+            <p  id="line"class="lead mb-5 text-white"> .</p>
+            <div class="cursor"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-8 mb-5">
+        <h2>Projects </h2>
+        <hr>
+        <p ><b>A website showcasing the projects developed by different developers. </b></p>
+        <p>Click the below button to see different projects.</p>
+        <a class="btn btn-primary btn-lg" href="/project">Projects &raquo;</a>
+      </div>
+      <div class="col-md-4 mb-5">
+
+      </div>
+    </div>
+    <!-- /.row -->
+    <div class="row">
+      <div class="col-md-4 mb-5">
+        <div class="card h-100">
+          <img class="card-img-top" style="height: 250px;"
+            src="https://miro.medium.com/max/1534/1*LtjX9ze971QwTHa7GKO3pA.gif" alt="">
+          <div class="card-body">
+            <h4 class="card-title">Machine Learning</h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus
+              neque sequi doloribus.</p>
+
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-4 mb-5">
+        <div class="card h-100">
+          <img class="card-img-top" style="height: 250px;"
+            src="https://i0.wp.com/css-tricks.com/wp-content/uploads/2019/08/s_371F6C84C7039CEE553EB4227817334449AAC717F48BBD9CEB8D944740809BED_1563997727740_ezgif-3399d2a5-2ee8-445e-97f0-5ba4b2c84e3b.com-video-to-gif_1.gif?ssl=1"
+            alt="">
+          <div class="card-body">
+            <h4 class="card-title">ReactJS</h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus
+              neque sequi doloribus totam ut praesentium aut.</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-4 mb-5">
+        <div class="card h-100">
+          <img class="card-img-top" src="https://i.pinimg.com/originals/16/9c/11/169c11293f5c08a325ee1bbc8a0d4cb8.gif"
+            alt="">
+          <div class="card-body">
+            <h4 class="card-title">JavaScript</h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus
+              neque.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <h2>Share Code in Real-time with Developers</h2>
+        <hr>
+        <p>
+          <b> An Online Code editor for Developers. </b>
+          <br>
+          <br>
+        </p>
+      </div>
+      <div class="col-md-6 mb-5" id="box">
+        <img src="https://user-images.githubusercontent.com/1552169/43365885-61862e62-933c-11e8-858e-ea2a6719f350.gif"
+          class="img-responsive">
+
+      </div>
+      <div class="col-md-6 mb-5" id="box">
+        <img src="https://user-images.githubusercontent.com/1552169/43365885-61862e62-933c-11e8-858e-ea2a6719f350.gif"
+          class="img-responsive">
+      </div>
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script>
+    var line = document.getElementById("line")
+var txts = ['Share Code in Real-time with Developers', 'An Online code editor for developers', 'Browse and connect with deveopers around the world'];
+var speed = 100
+
+async function typewriter(txt) {
+  for(let i = 0; i < txt.length; i++){
+    line.innerHTML += txt.charAt(i);
+    await delay(speed) 
+  }
+}
+
+async function reverseTypewriter(txt) {
+  for(let i = txt.length; i > 0; i--){
+    line.innerHTML = line.innerHTML.slice(0,-1)
+    await delay(speed)
+  }
+}
+
+async function writeLoop(){
+  
+  for(let i = 0; i < txts.length; i++){
+    await typewriter(txts[i])
+    await delay(1000)
+    await reverseTypewriter(txts[i])
+    await delay(1000)
+  }
+  
+  writeLoop()
+}
+
+function delay(ms){
+  return new Promise((resolve)=>{setTimeout(()=>{resolve()},ms)})
+}
+
+writeLoop()
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/header') %>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+
+<body>
+    <%-include('../partials/navbar') %>
+
+    <legend class="collab">
+        <h1> <i style="font-size: 38px;" class="fab fa-codepen "></i> Collab Pro</h1>
+    </legend>
+    <form class="form-signin" action="/project" method="POST">
+        <h3 class="form-signin-heading text-center">Create Project</h3>
+
+        <label>Project Name</label>
+        <input type="text" name="title" class="form-control" autofocus="">
+        <br />
+
+
+
+        <label>Description</label>
+        <textarea class="form-control" name="description" style="
+         height: 70px;"></textarea><br />
+
+        <label>Image Link(Optional)</label>
+        <input type="text" name="image" class="form-control" autofocus="">
+        <br />
+
+        <label>Github Link of Your Project</label>
+        <input type="text" name="githublink" class="form-control">
+        <br />
+
+
+        <button type="submit" class="btn  btn-success ">Create Project</button>
+    </form>
+    <br />
+    <br />
+
+</body>
+
+</html>

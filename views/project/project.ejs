@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/header') %>
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+    </head>
+
+<body style="padding-top: 0px;">
+    <%-include('../partials/navbar') %>
+    <section class="jumbotron" style="background-color: #707070!important;padding-top: 80px;">
+        <div class="container">
+            <div class="row text-center">
+
+                <p>
+                <form action="/project" method="GET" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" name="search" placeholder="Search Projects...." class="form-control">
+                        <input type="submit" value="Search" class="btn btn-default">
+                    </div>
+                </form>
+                </p>
+                <h2 style="color: white;font-family: apercu,sans-serif">Project Page</h2>
+                <p style="color: white; font-family: apercu,sans-serif;
+                font-size: 14px;
+                font-weight: 300;">
+                    A portfolio showcasing the projects carried out by a company, the most important content on design
+                    agency or architecture websites.
+                </p>
+
+               
+            </div>
+        </div>
+    </section>
+    <section class="wrapper">
+        <div class="container-fostrap">
+
+            <div class="content">
+
+                <div class="row">
+                    <%data.forEach(function(project){%>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="card">
+                            <a class="img-card" href="/project/<%=project._id%>">
+                                <img
+                                    src="<%=project.image%>" />
+                            </a>
+                            <div class="card-content">
+                                <h4 class="card-title">
+                                    <%=project.title%>
+
+                                </h4>
+                                <p class="card-content">
+                                    <%-project.description.substring(0,80)%> <a href="/project/<%=project._id%>"> Read
+                                        More....</a>
+                                </p>
+                            </div>
+
+                            <div class="card-content">
+                                <%if (project.user.image){%>
+                                <img class="avatar avatar img-circle" style=" width: 30px;
+                                    height: 30px;" src="<%=project.user.image%>"> BY <b><a href="/user/<%=project.user._id%>"><%=project.user.username%></b></a>
+
+                                <%} else{%>
+                                <img src="https://assets.awwwards.com/awards/media/cache/thumb_user_70/avatar/57289/59344b35278f6.jpg"
+                                    data-src="https://assets.awwwards.com/awards/media/cache/thumb_user_70/avatar/57289/59344b35278f6.jpg"
+                                    width="27" height="27" alt="Awwwards" class="lazy lazy-loaded"
+                                    style="border-radius: 50%;">
+                                    BY <b><a href="/user/<%=project.user._id%>"><%=project.user.username%></b></a>
+
+                                    <%}%>
+                               
+                              
+                            
+                                <form action="/project/<%=project._id%>/like?_method=PUT" method="POST" style="float: right;">
+                                <button type="submit"   class="btn"
+
+                                    style=" background-color: Transparent;background-repeat:no-repeat; outline: none; cursor: pointer;float:right;">
+                                    <span  id="heart"><i type="submit" style="font-size: 20px;color:red"
+                                            class="far fa-star" aria-hidden="true"></i> 
+                                        <%if(project.likes.length>0){%>
+                                            <%=project.likes.length%>
+                                        <%}%>
+                                        </span></button>
+
+                                        </form>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <% }) %>
+
+
+
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+
+    <script>
+    
+    </script>
+
+      
+</body>
+
+</html>

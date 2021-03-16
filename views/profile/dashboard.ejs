@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../partials/header') %>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/profile.css" />
+    
+    <title>Document</title>
+   
+</head>
+
+<body>
+
+    <%- include('../partials/navbar') %>
+
+    <%if(!profile){%>
+
+
+    <div></div>
+    <div class="main--bgc pb-5">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 130 1040 95">
+            <path fill="#707070" fill-opacity="1"
+                d="M0,224L60,224C120,224,240,224,360,213.3C480,203,600,181,720,181.3C840,181,960,203,1080,197.3C1200,192,1320,160,1380,144L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z">
+            </path>
+        </svg>
+
+        <div class="container container--title ">
+            <div class="row min-vh-75">
+                <div class="col text-center mt-5 mb-5">
+                    <h1 class="mb-4"><i class="fas fa-user-circle"></i> Create Your Profile</h1>
+                    <legend></legend>
+                    <p class="h3">Connect with developers and world around you.</p>
+                </div>
+            </div>
+        </div>
+       <br>
+    <a href="/profile/add" type="button" class="btn btn-lg btn-default" data-toggle="modal" data-target="#myModal" style="margin-left:650px;border-radius: 100px;">Create
+        Your Profile</a>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+
+    <%} else{%>
+
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 offset-md-2 col-12 profile-main mt-4">
+                <div class="row">
+                    <div class="col-md-12 col-12 user-detail-main border mb-3 pb-2">
+                        <div class="row">
+                            <div class="col-md-12 col-12 profile-back">
+                                <%if(!profile.Image){%>
+                                  <img src="http://nicesnippets.com/demo/profile-1.jpg"  class="img-rounded">
+                               <% }else{ %>
+
+                                <img src="/<%=profile.Image%>" class="img-rounded">
+                                <%}%>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-12 user-detail text-center">
+                                <%if(user._id==profile.user._id){%>
+                                <p style="text-align: right;"><a href="/profile/edit" data-toggle="modal"
+                                        data-target="#Modal"><u><i class="fas fa-pencil-alt"></i> Edit Profile</u></a>
+                                </p>
+                                <%}%>
+                                            <div class="modal fade" id="Modal" role="dialog">
+                                                <div class="modal-dialog">
+                                                
+                                                  <!-- Modal content-->
+                                                  <div class="modal-content">
+                                                      </div>
+                                                      </div>
+                                                      </div>
+                                            <h4 class="m-0"><strong><%=profile.Name%></strong></h4>
+                                <p class="m-0"><%=profile.Headline%></p>
+                                <p class="m-0"><%=profile.Country%></p>
+                                <p class="m-0"> <a href="<%=profile.linkedin%>"> <i
+                                            class="fab fa-linkedin fa-2x"></i></a>&nbsp;
+                                    <a href="<%=profile.githubusername%>"> <i class="fab fa-github fa-2x"
+                                            style="color: black;"></i></a>&nbsp;
+                                    <a href="<%=profile.facebook%>"> <i class="fab fa-facebook fa-2x"></i></a>
+
+                                </p>
+                                <p>
+
+                                </p>
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-md-6 col-12 accordion-group-one">
+
+                <div class="card-header rounded-0 pt-2 pb-2"
+                    style=" border:1px solid lightgray; padding: 10px;border-radius: 5px;">
+                    <h4>About Me</h4>
+                    <%=profile.AboutMe%>
+                    <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                aliquip ex ea commodo consequat. -->
+
+
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="card-header rounded-0 pt-2 pb-2"
+                    style=" border:1px solid lightgray; padding: 10px;border-radius: 5px;">
+                    <h4><i class="fa fa-cogs" style="color: blue;"></i> Skills</h4>
+                    <div>
+                        <%var formattedstring=profile.skills.split(",").join('\n  <legend></legend>')%>
+
+                        <%- formattedstring %>
+
+                    </div>
+
+                    <div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+            <%}%>
+            
+
+    </body>
+
+</html> 

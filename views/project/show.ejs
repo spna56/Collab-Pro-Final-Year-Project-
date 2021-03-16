@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/header') %>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/comment.css" />
+    
+</head>
+
+<body>
+    <%-include('../partials/navbar') %>
+
+<div class="container">
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-md-6 col-12 accordion-group-one">
+
+            <div class="card-header rounded-0 pt-2 pb-2"
+                style=" border:1px solid lightgray; padding: 10px;border-radius: 5px;margin-top: 50px;">
+                <div class="d-flex width-full flex-items-center position-relative">
+                    <a href="<%=project.githublink%>" >
+                      <span ><%=project.title%></span>
+                    </a>
+                    
+                  </div>
+                  <p class="pinned-item-desc text-gray text-small d-block mt-2 mb-3" style="    display: block;
+                  margin-block-start: 1em;
+                  margin-block-end: 1em;
+                  margin-inline-start: 0px;
+                  margin-inline-end: 0px;">
+                   <%=project.description%>
+                  </p>
+                
+                  <form action="/project/<%=project._id%>/like?_method=PUT" method="POST">
+                    <button type="submit"   class="btn"
+
+                        style=" background-color: Transparent;background-repeat:no-repeat; outline: none; cursor: pointer;">
+                       <i type="submit" style="font-size: 20px;color:red"
+                                class="far fa-star" aria-hidden="true"></i> 
+                            <%if(project.likes.length>0){%>
+                                <%=project.likes.length%>
+                            <%}%>
+                           </button>
+
+                            </form>
+                        
+        </div>
+
+        </div>
+        <div class="col-md-6 ">
+        <div class="detailBox">
+            <div class="titleBox">
+                <label>Comment Box</label>
+
+            </div>
+            <div class="commentBox">
+
+                <p class="taskDescription">Share Your Views.
+                </p>
+            </div>
+            <div class="actionBox">
+                <%project.comment.forEach(function(comment){%>
+                <ul class="commentList">
+                    
+                        <li>
+                            <div class="commenterImage">
+                                <img src="http://placekitten.com/50/50" />  
+                            </div>
+                            <div class="commentText">
+                                <p>
+                                    <b>
+                                        <%=comment.author.username%>
+
+                                    </b>
+                                </p>
+                                <p class=""><%=comment.text%></p> 
+    
+                            </div>
+                        </li>
+                 
+                    
+
+                </ul>
+                <%  }) %>
+                <form class="form-inline" role="form" action="/project/<%=project._id%>/comments" method="POST">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="text" placeholder="Your comments" />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>   
+    </div>
+</div>
+</body>
+
+</html>
